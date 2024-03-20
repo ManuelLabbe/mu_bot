@@ -47,20 +47,6 @@ async def deposito(ctx, numero_mision: int, valor_deposito: int):
                           color=0x00ff00)
     await ctx.send(embed=embed)
 
-import asyncio
-@bot.command()
-async def test_barra(ctx):
-    # Crear un mensaje inicial de la barra de carga
-    mensaje_carga = await ctx.send("Cargando... [:-------------------------]")
-
-    # Actualizar la barra de carga cada segundo
-    for i in range(1, 21):  # 20 caracteres en total para la barra de carga
-        await asyncio.sleep(1)  # Esperar 1 segundo
-        barra = f"[{'X' * i}{'-' * (20 - i)}]"  # Construir la barra de carga con = para el progreso y - para el resto
-        await mensaje_carga.edit(content=f"Cargando... {barra}")
-
-    # Mensaje de carga completa
-    await mensaje_carga.edit(content="¡Carga completa! [:-------------------------]")
 
 """
 TODO:
