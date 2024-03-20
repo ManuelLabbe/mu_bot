@@ -1,0 +1,9 @@
+name: mu_bot
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pandas
+  - numpy
+  - pip:
+    - discord.py
