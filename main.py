@@ -8,8 +8,6 @@ from util import tabla_misiones, barra_de_carga
 intents = discord.Intents.default()
 intents.message_content = True
 
-#client = discord.Client(intents=intents)
-
 bot = commands.Bot(command_prefix='$misiones ', intents=intents)
 cols = ['Numero', 'Mision', 'Valor']
 df = pd.DataFrame(columns = cols)
