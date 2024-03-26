@@ -56,8 +56,7 @@ async def stats(ctx):
     for idx, cols in enumerate(tabla_misiones.Mision):
         total = float(tabla_misiones.Valor.iloc[idx])
         saldo = float(tabla_misiones.Saldo.iloc[idx])
-        porcentaje = (total / saldo) * 100
-        await ctx.send(f'-- {porcentaje}')
+        porcentaje = (saldo / total) * 100
         texto_df += f'{idx+1}. {cols} ${tabla_misiones.Valor.iloc[idx]}, Saldo: ${saldo} {barra_de_carga((saldo/total)*100)}\n'
     #texto_df += f'test: {tabla_misiones}'
     embed = discord.Embed(title='Misiones',

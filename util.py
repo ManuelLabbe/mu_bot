@@ -18,7 +18,7 @@ def barra_de_carga(porcentaje):
     valor = porcentaje/100
     barra = '[:-------------------------]'
     rango = int(21*valor)
-    barra = f"[{'X' * rango}{'-' * (20 - rango)}] {porcentaje}%"
+    barra = f"[{'X' * rango}{'-' * (20 - rango)}] {porcentaje: .2f}%"
     if(valor == 1):
         return '¡Fondos para la misión completados!'
     return barra
