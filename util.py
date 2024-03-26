@@ -23,4 +23,5 @@ def barra_de_carga(porcentaje):
         return '¡Fondos para la misión completados!'
     return barra
 
+
     

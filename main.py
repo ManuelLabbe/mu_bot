@@ -50,6 +50,20 @@ async def deposito(ctx, numero_mision: int, valor_deposito: int):
     tabla_misiones['Saldo'].loc[pos] = saldo.saldo_actual
     await ctx.send(embed=embed)
 
+@bot.command()
+async def stats(ctx):
+    texto_df = ''
+    for idx, cols in enumerate(tabla_misiones.Mision):
+        total = float(tabla_misiones.Valor.iloc[idx])
+        saldo = float(tabla_misiones.Saldo.iloc[idx])
+        porcentaje = (total / saldo) * 100
+        await ctx.send(f'-- {porcentaje}')
+        texto_df += f'{idx+1}. {cols} ${tabla_misiones.Valor.iloc[idx]}, Saldo: ${saldo} {barra_de_carga((saldo/total)*100)}\n'
+    #texto_df += f'test: {tabla_misiones}'
+    embed = discord.Embed(title='Misiones',
+                          description= texto_df,
+                          color=0x00ff00)
+    await ctx.send(embed=embed)
 
 """
 TODO:
@@ -59,4 +73,4 @@ $mision deposito [nr.mision] [valor deposito] -> suma saldo a la misión
 $mision stats -> barra de progreso
 """
 
-bot.run('token here')
+bot.run('token')
