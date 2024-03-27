@@ -19,6 +19,16 @@ async def test(ctx, arg):
     await ctx.send(barra_de_carga(int(arg)))
 
 @bot.command()
+async def delete(ctx, numero_mision: int):
+    global tabla_misiones
+    # Verificar si la fila existe antes de eliminarla
+    if numero_mision in tabla_misiones['Numero'].values:
+        tabla_misiones = misiones.delete(numero_mision=numero_mision)
+        await ctx.send(f'Se eliminó la misión número {numero_mision}.')
+    else:
+        await ctx.send(f'No se encontró ninguna misión con el número {numero_mision}.')
+
+@bot.command()
 async def add(ctx, *, arg):
     global tabla_misiones
     nombre = re.findall(r'\b[a-zA-Z]+\b', arg)
@@ -63,6 +73,7 @@ async def stats(ctx):
                           description= texto_df,
                           color=0x00ff00)
     await ctx.send(embed=embed)
+
 
 """
 TODO:

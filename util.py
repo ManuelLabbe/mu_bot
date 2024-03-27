@@ -12,6 +12,10 @@ class tabla_misiones:
         self.misiones = pd.concat([self.misiones,new], ignore_index=True)
         self.misiones = self.misiones.reset_index(drop=True)
         return self.misiones
+    def delete(self, numero_mision):
+        self.misiones = self.misiones.drop(
+            self.misiones[self.misiones['Numero'] == numero_mision].index)
+        return self.misiones
     
 
 def barra_de_carga(porcentaje):
@@ -19,7 +23,7 @@ def barra_de_carga(porcentaje):
     barra = '[:-------------------------]'
     rango = int(21*valor)
     barra = f"[{'X' * rango}{'-' * (20 - rango)}] {porcentaje: .2f}%"
-    if(valor == 1):
+    if(valor >= 1):
         return '¡Fondos para la misión completados!'
     return barra
 
